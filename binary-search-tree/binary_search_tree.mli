@@ -1,16 +1,15 @@
 open Base
 
-type bst
+type 'a bst
 
-val empty : bst
+val empty : 'a bst
 
-val value : bst -> (int, string) Result.t
+val value : 'a bst -> ('a, string) Result.t
 
-val left : bst -> (bst, string) Result.t
+val left : 'a bst -> ('a bst, string) Result.t
 
-val right : bst -> (bst, string) Result.t
+val right : 'a bst -> ('a bst, string) Result.t
 
-val insert : int -> bst -> bst
+val insert : int -> int bst -> int bst
 
-val to_list : bst -> int list
-
+val to_list : 'a bst -> 'a list

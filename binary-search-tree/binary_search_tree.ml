@@ -1,6 +1,7 @@
 open Base
 
-type bst = Empty | Node of { left : bst; right : bst; value : int }
+(* polymorphic & recursive type *)
+type 'a bst = Empty | Node of { left : 'a bst; right : 'a bst; value : 'a }
 
 let empty = Empty
 
