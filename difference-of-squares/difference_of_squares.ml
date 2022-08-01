@@ -13,7 +13,5 @@ let sum_of_squares number =
     |> List.map (fun x -> square x)
     |> sum
 
-List.map  [1] (fun (a, b) -> (a, List.count(b)))
-List.map v (fun (a, b) -> a);;
 let difference_of_squares number =
     square_of_sum number - sum_of_squares number

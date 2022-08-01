@@ -3,7 +3,6 @@ open Base
 let is_dna x = (Char.equal x 'A' || Char.equal x 'C' || Char.equal x 'G' || Char.equal x 'T')
 
 let explode s = List.init (String.length s) ~f:(String.get s)
-let count exploded = List.map exploded ~f:(fun x-> (x,1))
 let is_dna_string x = 
   let filtered_length = String.filter x ~f:(fun x -> is_dna x)
   |> String.length in
@@ -22,6 +21,6 @@ let count_nucleotides s =
   let exploded = explode s in
   let count = List.map exploded ~f:(fun x -> (x, 1)) in
   let result = Map.of_alist_multi (module Char) count in
-  let result2 = List.map (Map.to_alist result) (fun (a, b) -> (a, List.length b)) in
+  let result2 = List.map (Map.to_alist result) ~f:(fun (a, b) -> (a, List.length b)) in
   Result.Ok (Map.of_alist_exn (module Char) result2)
   
