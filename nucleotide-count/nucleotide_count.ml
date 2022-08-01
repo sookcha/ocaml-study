@@ -21,5 +21,7 @@ let count_nucleotides s =
   if not (is_dna_string s) then Result.Error 'X' else
   let exploded = explode s in
   let count = List.map exploded ~f:(fun x -> (x, 1)) in
-  let result = Map.of_alist_reduce (module Char) count ~f:(fun _ x -> x+1) in
-  Result.Ok result
+  let result = Map.of_alist_multi (module Char) count in
+  let result2 = List.map (Map.to_alist result) (fun (a, b) -> (a, List.length b)) in
+  Result.Ok (Map.of_alist_exn (module Char) result2)
+  
