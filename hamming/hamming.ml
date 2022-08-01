@@ -18,7 +18,7 @@ let hamming_distance dna1 dna2 =
     then Result.Error "left and right strands must be of equal length"
   else
     let matched_count = List.map2 diff dna1 dna2
-    |> List.filter (fun x -> x = true)
+    |> List.filter (fun x -> x)
     |> List.length in
     Result.Ok matched_count
   

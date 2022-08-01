@@ -27,10 +27,10 @@ let rec insert x = function
   | Node { value; left; right } when value >= x ->
       Node { value; left = insert x left; right }
   (* 이외의 케이스는 그대로 반환 *)
-  | Node {value; left; right} -> Node {value; left; right}
+  | Node { value; left; right } -> Node { value; left; right }
 
 let rec to_list = function
   (* 트리가 비어있으면 빈 리스트 *)
   | Empty -> []
   (* 그렇지 않다면 left + value + right *)
-  | Node { value; left; right } -> (to_list left) @ [value] @ (to_list right)
+  | Node { value; left; right } -> to_list left @ [ value ] @ to_list right
