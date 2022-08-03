@@ -1,8 +1,9 @@
+open Base
+
 let acronym message =
   message
-  |> String.uppercase_ascii
-  |> Str.split (Str.regexp {|[ -]+|})
-  |> List.map (fun x -> Str.replace_first (Str.regexp "_") "" x)
-  |> List.map (fun x -> String.get x 0)
-  |> List.to_seq
-  |> String.of_seq
+  |> String.uppercase
+  |> String.split_on_chars ~on:[' '; '_'; '-']
+  |> List.filter ~f:(fun x -> not(String.equal "" x))
+  |> List.map ~f:(fun x -> String.get x 0)
+  |> String.of_char_list
